@@ -450,62 +450,118 @@
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
-const express = require('express');
-const app = express();
+// const express = require('express');
+// const app = express();
 
-app.use(express.json());
+// app.use(express.json());
 
-function validate(req, res, next) {
-    const username = req.body.username;
-    const password = req.body.password;
+// function validate(req, res, next) {
+//     const username = req.body.username;
+//     const password = req.body.password;
 
-    if (!username || !password) {
-        return res.status(400).json({
-            error: 'Username and Password are required'
-        })
-    }
-    next();
-}
+//     if (!username || !password) {
+//         return res.status(400).json({
+//             error: 'Username and Password are required'
+//         })
+//     }
+//     next();
+// }
 
-function authenticate(req, res, next) {
-    const username = req.body.username;
-    const password = req.body.password;
+// function authenticate(req, res, next) {
+//     const username = req.body.username;
+//     const password = req.body.password;
 
-    if (username === 'admin' && password === 'nimda') {
-        req.user = { id: 1, username }; // Attach user info to the request object
-        next();
-    }else{
-      return res.status(401).json({
-        error: 'Invalid credentials'
-    })}
-}
+//     if (username === 'admin' && password === 'nimda') {
+//         req.user = { id: 1, username }; // Attach user info to the request object
+//         next();
+//     }else{
+//       return res.status(401).json({
+//         error: 'Invalid credentials'
+//     })}
+// }
 
-function processRequest(req, res) {
-    res.json({
-        message: 'request process successfully',
-        user: req.user
-    })
-}
+// function processRequest(req, res) {
+//     res.json({
+//         message: 'request process successfully',
+//         user: req.user
+//     })
+// }
 
-app.post('/login', validate, authenticate, processRequest);
+// app.post('/login', validate, authenticate, processRequest);
 
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    if (!res.headersSent) { // Check to prevent duplicate responses
-        res.status(500).json({ error: 'Something went wrong!' });
-    }
-});
+// app.use((err, req, res, next) => {
+//     console.error(err.stack);
+//     if (!res.headersSent) { // Check to prevent duplicate responses
+//         res.status(500).json({ error: 'Something went wrong!' });
+//     }
+// });
 
-app.listen(3000, () => {
-    console.log('server running on port 3000');
-})
+// app.listen(3000, () => {
+//     console.log('server running on port 3000');
+// })
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+// const express = require('express');
+// const app = express();
+
+// const roles = {
+//     admin:['read', 'write', 'delete'],
+//     user:['read'],
+//     editor:['read', 'write']
+// }
+
+// function checkPermission(requiredPermission) {
+//     return (req, res, next) =>{
+//         const user = req.user?.role;
+//         console.log(user);
+//         if (!user) {
+//             return res.status(401).json({error: 'No role assigned'})
+//         }
+//         const userPermission = roles[user];
+//         console.log(userPermission);
+//         if (!userPermission || !userPermission.includes(requiredPermission)) {
+//             return res.status(403).json({error: 'Access denied: insufficient permission'})
+//         }
+//         next();
+//     }
+// }
+
+// app.use((req, res, next) => {
+//     req.user = {
+//         id: 1,
+//         username: 'john',
+//         role: 'editor'
+//     }
+//     next();
+// })
+
+// app.get('/read', checkPermission('read'), (req, res) => {
+//     res.send('Reading data...')
+// })
+
+// app.get('/write', checkPermission('write'), (req, res) => {
+//     res.send('Writing data...')
+// })
+
+// app.get('/delete', checkPermission('delete'), (req, res) => {
+//     res.send('Delete data...')
+// })
+
+// app.get('/', (req, res) => {
+//     res.send('Welcome to the app!')
+// })
+
+// app.listen(3000, () => {
+//     console.log('server running on port 3000');
+// })
+
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
-
-//---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
