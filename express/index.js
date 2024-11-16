@@ -356,87 +356,149 @@
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
+// const express = require('express');
+// const session = require('express-session');
+// const app = express();
+
+
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true })); 
+
+// app.use(session({
+//     secret: 'youaresecret',
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {
+//         secure: false,
+//         httpOnly: true,
+//         sameSite: 'strict'
+//     }
+// }));
+
+
+// const VALID_USERNAME = 'admin';
+// const VALID_PASSWORD = 'nimda';
+
+// app.post('/login', (req, res) => {
+//     const username = req.body.username;
+//     const password = req.body.password;
+
+//     if (username === VALID_USERNAME && password === VALID_PASSWORD) {
+//         req.session.isAuthenticated = true;
+//         res.json({
+//             message: 'you are logged in successfully',
+//         })
+//     } else {
+//         res.status(401).json({
+//             message: 'invalid credentials'
+//         })
+//     }
+// })
+
+// app.post('/logout', (req, res) => {
+//     req.session.destroy((err) => {
+//         if (err) {
+//             return res.status(500).json({
+//                 message: 'logout failed'
+//             })
+//         } else {
+//             res.json({
+//                 message: 'logout successfully'
+//             });
+//         }
+//     })
+// })
+
+// function authorize(req, res, next) {
+//     if (req.session.isAuthenticated) {
+//         next();
+//     } else {
+//         res.status(403).json({
+//             message: 'access denied please login'
+//         })
+//     }
+// }
+
+// app.get('/protected', authorize, (req, res) => {
+//     res.json('welcome to protected route');
+// })
+
+// app.listen(3000, () => {
+//     console.log('server running on port 3000');
+// })
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const bodyParser = require('body-parser');
+// const userRoute = require('./routes/userRoute');
+// const app = express();
+
+// app.use(bodyParser.json());
+
+// mongoose.connect()
+// .then(() => console.log('Connected to mongoDB'))
+// .catch((err) => console.error('Error connecting to mongoDB: ' + err))
+
+// app.use('/api/users', userRoute);
+
+// app.listen(3000, () => {
+//     console.log('Server running on port 3000');
+// })
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+
 const express = require('express');
-const session = require('express-session');
 const app = express();
 
-
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); 
 
-app.use(session({
-    secret: 'youaresecret',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        secure: false,
-        httpOnly: true,
-        sameSite: 'strict'
-    }
-}));
-
-
-const VALID_USERNAME = 'admin';
-const VALID_PASSWORD = 'nimda';
-
-app.post('/login', (req, res) => {
+function validate(req, res, next) {
     const username = req.body.username;
     const password = req.body.password;
 
-    if (username === VALID_USERNAME && password === VALID_PASSWORD) {
-        req.session.isAuthenticated = true;
-        res.json({
-            message: 'you are logged in successfully',
-        })
-    } else {
-        res.status(401).json({
-            message: 'invalid credentials'
+    if (!username || !password) {
+        return res.status(400).json({
+            error: 'Username and Password are required'
         })
     }
-})
-
-app.post('/logout', (req, res) => {
-    req.session.destroy((err) => {
-        if (err) {
-            return res.status(500).json({
-                message: 'logout failed'
-            })
-        } else {
-            res.json({
-                message: 'logout successfully'
-            });
-        }
-    })
-})
-
-function authorize(req, res, next) {
-    if (req.session.isAuthenticated) {
-        next();
-    } else {
-        res.status(403).json({
-            message: 'access denied please login'
-        })
-    }
+    next();
 }
 
-app.get('/protected', authorize, (req, res) => {
-    res.json('welcome to protected route');
-})
+function authenticate(req, res, next) {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    if (username === 'admin' && password === 'nimda') {
+        req.user = { id: 1, username }; // Attach user info to the request object
+        next();
+    }else{
+      return res.status(401).json({
+        error: 'Invalid credentials'
+    })}
+}
+
+function processRequest(req, res) {
+    res.json({
+        message: 'request process successfully',
+        user: req.user
+    })
+}
+
+app.post('/login', validate, authenticate, processRequest);
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    if (!res.headersSent) { // Check to prevent duplicate responses
+        res.status(500).json({ error: 'Something went wrong!' });
+    }
+});
 
 app.listen(3000, () => {
     console.log('server running on port 3000');
 })
-
-
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
