@@ -418,3 +418,68 @@
 //---------------------------------------------------------------------------------------------------------------------------------
 
 
+// const mongoose = require('mongoose');
+// const Book = require('./models/Book');
+// const Author = require('./models/Author');
+
+// mongoose.connect('mongodb+srv://kitesmaurya:shubham123@cluster0.sghep.mongodb.net/library')
+// .then(async () => {console.log('Connected to database')
+//   const authors = [
+//     { title: "J.K. Rowling" },
+//     { title: "George R.R. Martin" },
+//     { title: "J.R.R. Tolkien" }
+//   ];
+
+//   try {
+//     // Insert authors and check the result
+//     const authorsResult = await Author.insertMany(authors);
+//     console.log('Authors inserted:', authorsResult);
+
+//     // Ensure authors are inserted and we can access insertedIds
+//     if (!authorsResult || !authorsResult.insertedIds || authorsResult.insertedIds.length < 3) {
+//       throw new Error('Failed to insert authors or insertedIds are empty');
+//     }
+
+//     // Insert books with authorId references
+//     const books = [
+//       { title: "Harry Potter and the Sorcerer's Stone", authorId: authorsResult.insertedIds[0] },
+//       { title: "A Game of Thrones", authorId: authorsResult.insertedIds[1] },
+//       { title: "The Hobbit", authorId: authorsResult.insertedIds[2] }
+//     ];
+
+//     await Book.insertMany(books);
+//     console.log('Books inserted successfully');
+//   } catch (err) {
+//     console.log('Error:', err);
+//   }
+// })
+// .catch((err) => {console.log('Error: ', err)});
+
+// //AGGREGATE
+
+// // async function getBookWithAuthors() {
+// //     try {
+// //         const bookWithAuthors = await Book.aggregate([
+// //             {
+// //                 $lookup: {
+// //                     from: 'authors',
+// //                     localField: 'authorId',
+// //                     foreignField: '_id',
+// //                     as: 'authorDetails'
+// //                 }
+// //             },
+// //             {
+// //                 $unwind: '$authorDetails'
+// //             }            
+// //         ]);
+// //     } catch (error) {
+// //         console.error('Error during aggregation: ', error);
+// //     }
+// // }
+
+// // getBookWithAuthors();
+
+
+//---------------------------------------------------------------------------------------------------------------------------------
+
+
