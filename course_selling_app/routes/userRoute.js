@@ -3,7 +3,7 @@ const z = require('zod');
 const userModel = require('../model/userModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const {JWT_USER_PASSWORD} = require('../config');
+const userMiddelware = require('../middelware/userMiddelware');
 require('dotenv').config();
 const router = express.Router();
 

@@ -3,8 +3,9 @@ const router = express.Router();
 const z = require('zod');
 const jwt = require('jsonwebtoken');
 const adminModel = require('../model/adminModel');
-const {JWT_ADMIN_PASSWORD} = require('../config');
+const courseModel = require('../model/courseModel');
 const bcrypt = require('bcrypt');
+const adminMiddelware = require('../middelware/adminMiddelware');
 require('dotenv').config();
 
 const validate = z.object({
@@ -48,6 +49,26 @@ router.post('/signin', async (req, res) => {
         }
     } catch (error) {
         res.json({message: 'signin failed', error: error.message})
+    }
+});
+
+router.post('/course', adminMiddelware, async (req, res) => {
+    try {
+        const validateZod = z.object({
+            title: z.string(),
+            description: z.string(),
+            imageUrl: z.string(),
+            price: z.string(),
+        });
+        const {title, description, imageUrl, price} = validateZod.parse(req.body);
+        const course = await courseModel.create({title, description, imageUrl, price, creatorId: req.adminId});
+        res.json({message: 'course is created',
+            course
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "Internal Error"
+        });
     }
 });
 
