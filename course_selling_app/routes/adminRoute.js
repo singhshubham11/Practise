@@ -72,4 +72,45 @@ router.post('/course', adminMiddelware, async (req, res) => {
     }
 });
 
+router.put('/course', adminMiddelware, async (req, res) => {
+    try {
+        const validateZod = z.object({
+            title: z.string(),
+            description: z.string(),
+            imageUrl: z.string(),
+            price: z.string(),
+        });
+        const {title, description, imageUrl, price, courseId} = validateZod.parse(req.body);
+        const updateCourse = await courseModel.findOneAndUpdate(
+            {_id: courseId, creatorId: req.adminId},
+            {title, description, imageUrl, price}
+        );
+        if (!updateCourse) {
+            return res.status(404).json({
+                message: "Course not found or you are not authorized to update this course",
+            });
+        }
+    } catch (error) {
+        res.json({
+            message: 'Cannot update the course'
+        });
+    }
+});
+
+router.get('/course/bulk', adminMiddelware, async (req, res) => {
+    try {
+        const adminId = req.adminId;
+        console.log(adminId);
+        const courses = await courseModel.find({creatorId: adminId});
+        res.json({
+            message: 'here the list of courses',
+            courses
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "Cannot get the courses"
+        });
+    }
+});
+
 module.exports = router;
