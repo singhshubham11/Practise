@@ -1,6 +1,8 @@
 const express = require('express');
 const z = require('zod');
 const userModel = require('../model/userModel');
+const purchaseModel = require('../model/purchaseModel');
+const courseModel = require('../model/courseModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const userMiddelware = require('../middelware/userMiddelware');
@@ -60,6 +62,44 @@ router.post('/signin', async (req, res) => {
         }
     } catch (error) {
         res.json({message: 'signin failed', error: error.message})
+    }
+});
+
+router.post('/purchase', userMiddelware, async (req, res) => {
+    try {
+        const userId = req.userId;
+        const courseId = req.body.courseId;
+        await purchaseModel.create({
+            userId,
+            courseId
+        });
+        res.status(201).json({
+            message: 'Course purchased successfully'
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: 'Internal server error',
+            error: error.message
+        });
+    }
+});
+
+router.get('/purchase', userMiddelware, async (req, res) => {
+    try {
+        const userId = req.userId;
+        const purchases = await purchaseModel.find({userId});
+        const courseData = await courseModel.find({
+            _id: {$in: purchases.map(x => x.courseId)}
+        });
+        res.json({
+            purchases,
+            courseData
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: 'Internal server error',
+            error: error.message
+        });
     }
 });
 
