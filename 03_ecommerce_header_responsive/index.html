@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Header</title>
+    <style>
+        /* Reset and base styles */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Ensures padding doesn't affect element dimensions */
+        }
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        /* Header container - flex layout for alignment */
+        .header{
+            display: flex;
+            flex-wrap: wrap;    
+            justify-content: space-between;    
+            align-items: center;   
+            padding: 1rem 2rem;
+            background-color: aqua;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) ;
+            position: relative;
+            z-index: 1000;
+        }
+        .logo{
+            height: 40px;
+            width: auto;
+            margin-right: 1rem;
+        }
+    </style>    
+</head>
+<body>
+    <header class="header">
+        <!-- Logo -->
+        <img src="vecteezy_abstract-geometric-logo-or-infinity-line-logo-for-your-company_8214517.jpg" alt="Company Logo" class="logo">
+
+        <!-- Main Navigation -->
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#" class="nav-link">Men</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Women</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Kids</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Beauty</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Genz</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Studio</a></li>
+            </ul>
+        </nav>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search for products..." aria-label="Search">
+        </div>
+
+        <!-- Icons (Profile and Wishlist) -->
+        <div class="icon-container">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" stroke="#333333" stroke-width="2"/>
+                <path d="M20.59 22C20.59 18.13 16.74 15 12 15C7.26 15 3.41 18.13 3.41 22" stroke="#333333" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.5 12.572L12 20L4.5 12.572C4.21836 12.2992 4.00694 11.9635 3.8842 11.5936C3.76145 11.2236 3.73115 10.8306 3.79596 10.4473C3.86077 10.0641 4.01869 9.70243 4.25614 9.39399C4.4936 9.08555 4.80322 8.83969 5.15799 8.6783C5.51276 8.51691 5.90179 8.44492 6.29139 8.46858C6.68099 8.49224 7.0588 8.61085 7.3905 8.81398L12 11.672L16.6095 8.81398C16.9412 8.61085 17.319 8.49224 17.7086 8.46858C18.0982 8.44492 18.4872 8.51691 18.842 8.6783C19.1968 8.83969 19.5064 9.08555 19.7439 9.39399C19.9813 9.70243 20.1392 10.0641 20.204 10.4473C20.2689 10.8306 20.2386 11.2236 20.1158 11.5936C19.9931 11.9635 19.7816 12.2992 19.5 12.572Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </header>
+</body>
+</html>
