@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content=al-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="queries.css">
     <title>Quill</title>
 </head>
 <body>
@@ -15,7 +16,7 @@
         <header>
             <!-- NAVIGATION -->
             <nav class="navbar">
-                <a href="index.html"><img class="logo-md" src="images/quill.svg" alt="quill logo"></a>
+                <a class="beta" href="index.html"><img class="logo-md" src="images/quill.svg" alt="quill logo"></a>
                 <ul class="nav-btn-container">
                     <li><a class="btn btn-primary-outline" href="login.html">Login</a></li>
                     <li><a class="btn btn-primary" href="register.html">Register</a></li>
@@ -24,9 +25,9 @@
 
                 <!-- HERO SECTION -->
                 <section class="hero-section">
-                <h1 class="hero-heading"><span class="highlight highlight-secondary">Mindful living</span> for the <br> digital world 📱</h1>
+                <h1 class="hero-heading"><span class="highlight highlight-secondary">Mindful living</span> for the <br class="hero-heading-break"> digital world 📱</h1>
                 <p class="hero-paragraph">The ultimate bullet journal app to document, reflect, and embrace your personal journey</p>
-                <ul>
+                <ul class="hero-btn-container">
                     <li><a class="btn btn-primary" href="register.html">Get Started</a></li>
                     <li><a class="btn btn-primary-outline" href="#features">Learn More</a></li>
                 </ul>
@@ -38,19 +39,21 @@
             <!-- FEATURES SECTION -->
             <section class="features-section">
                 <h2 class="features-main-heading">Finally, a <span class="highlight highlight-tertiary">simple and easy</span> to use journal app</h2>
-                <div>
-                    <h3 class="features-heading">Write all your journals in a few clicks</h3>
-                    <p>Unlock the simplicity of online journaling - say goodbye to the hassle of pen and paper and hello to effortless journaling with just a few clicks.</p>
+                <div class="features-grid-container">
+                    <div>
+                        <h3 class="features-heading">Write all your journals in a few clicks</h3>
+                        <p>Unlock the simplicity of online journaling - say goodbye to the hassle of pen and paper and hello to effortless journaling with just a few clicks.</p>
+                    </div>
                     <img class="feature-img" src="images/features-1.png" alt="simple online journaling">
-                </div>
-                <div>
-                    <h3 class="features-heading">Beautifully displayed and neatly organised</h3>
-                    <p>Not just words on a screen - our journals are beautifully displayed and neatly organised.</p>
-                    <img class="feature-img" src="images/features-2.png" alt="simple online journaling">
-                </div>
-                <div>
-                    <h3 class="features-heading">Create and reflect from anywhere in the world</h3>
-                    <p>Whether you're at home or exploring the far corners of the world, create and reflect on your experiences, thoughts, and emotions from anywhere on the globe.</p>
+                    <div>
+                        <h3 class="features-heading">Beautifully displayed and neatly organised</h3>
+                        <p>Not just words on a screen - our journals are beautifully displayed and neatly organised.</p>                        
+                    </div>
+                    <img class="feature-img feature-img-swap-order" src="images/features-2.png" alt="simple online journaling">
+                    <div>
+                        <h3 class="features-heading">Create and reflect from anywhere in the world</h3>
+                        <p>Whether you're at home or exploring the far corners of the world, create and reflect on your experiences, thoughts, and emotions from anywhere on the globe.</p>                        
+                    </div>
                     <img class="feature-img" src="images/features-3.png" alt="simple online journaling">
                 </div>
             </section>
@@ -81,8 +84,13 @@
                 <li><a href="register.html">Register</a></li>
             </ul>
 
-            <p class="small-text">Made with ♥︎ in India</p>
+            <p class="small-text">Made with <span class="heart-icon">♥︎</span> in India</p>
         </footer>
     </div>
+
+    <div class="chat-container">
+        <img class="chat-icon" src="images/chat.svg" alt="chat icon">
+    </div>
+
 </body>
 </html>
