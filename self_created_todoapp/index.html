@@ -96,56 +96,47 @@
     </ul>
 
     <script>
-      const addId = document.getElementById("addButtonId");
-      addId.addEventListener('click', addTodo);
-
+      const addButton = document.getElementById("addButtonId");
       const parentElement = document.getElementById("todo-list");
-      console.log(parentElement);
+      addButton.addEventListener('click', addTodo);
 
-      const createLiElement = document.createElement("li");
-      console.log(createLiElement);
       
-
-      const createSpanElement = document.createElement("span");
-      createSpanElement.setAttribute("class","todo-text")
-      console.log(createSpanElement);
-
-
-      const createInputElement = document.createElement("input");
-      createInputElement.setAttribute("type", "text");
-      console.log(createInputElement);
-
-      const createdivElement = document.createElement("div");
-      createdivElement.setAttribute("class","todo-action");
-      console.log(createdivElement);
-
-      const createbuttonElement1 = document.createElement("button");
-      createbuttonElement1.addEventListener('click', editTodo);
-      createbuttonElement1.textContent = "Edit";
-      console.log(createbuttonElement1);
-
-      const createbuttonElement2 = document.createElement("button");
-      createbuttonElement2.addEventListener('click', deleteTodo);
-      createbuttonElement2.textContent = "Delete";
-      console.log(createbuttonElement2);
-
       function addTodo() {
         const inputId = document.getElementById("todo-input");
-        let valueOfInputBox = inputId.value;
-        if (!valueOfInputBox.trim()) {
+        let valueOfInputBox = inputId.value.trim();
+        if (!valueOfInputBox) {
           return;
         }
-        createLiElement.textContent = valueOfInputBox;
-        parentElement.appendChild(createLiElement);
-        createLiElement.appendChild(createSpanElement);
-        createLiElement.appendChild(createdivElement);
+
+        const createLiElement = document.createElement("li");           
+
+        const createSpanElement = document.createElement("span");
+        createSpanElement.setAttribute("class","todo-text");
+        createSpanElement.textContent = valueOfInputBox;
+
+        const createdivElement = document.createElement("div");
+        createdivElement.setAttribute("class","todo-action");
+
+        const createbuttonElement1 = document.createElement("button");
+        createbuttonElement1.addEventListener('click', editTodo);
+        createbuttonElement1.textContent = "Edit";
+
+        const createbuttonElement2 = document.createElement("button");
+        createbuttonElement2.addEventListener('click', deleteTodo);
+        createbuttonElement2.textContent = "Delete";
+
         createdivElement.appendChild(createbuttonElement1);
         createdivElement.appendChild(createbuttonElement2);
+
+        createLiElement.appendChild(createSpanElement);
+        createLiElement.appendChild(createdivElement);
+        
+        parentElement.appendChild(createLiElement);
+        
+
+        inputId.value = "";
       }
       
-      function deleteTodo() {
-        createLiElement.remove();
-      }
 
     </script>
 
