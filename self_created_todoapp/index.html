@@ -94,6 +94,43 @@
         </div>
       </li>
     </ul>
+
+    <script>
+      const addId = document.getElementById("addButtonId");
+      addId.addEventListener('click', addTodo);
+
+      const parentElement = document.getElementById("todo-list");
+      console.log(parentElement);
+
+      const createLiElement = document.createElement("li");
+      console.log(createLiElement);
+      
+
+      const createSpanElement = document.createElement("span");
+      createSpanElement.setAttribute("class","todo-text")
+      console.log(createSpanElement);
+
+
+      const createInputElement = document.createElement("input");
+      createInputElement.setAttribute("type", "text");
+      console.log(createInputElement);
+
+      const createdivElement = document.createElement("div");
+      createdivElement.setAttribute("class","todo-action");
+      console.log(createdivElement);
+
+      const createbuttonElement1 = document.createElement("button");
+      createbuttonElement1.addEventListener('click', editTodo);
+      createbuttonElement1.textContent = "Edit";
+      console.log(createbuttonElement1);
+
+      const createbuttonElement2 = document.createElement("button");
+      createbuttonElement2.addEventListener('click', deleteTodo);
+      createbuttonElement2.textContent = "Delete";
+      console.log(createbuttonElement2);
+
+    </script>
+
   </div>
 </body>
 </html>
