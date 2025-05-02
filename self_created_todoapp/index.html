@@ -129,6 +129,20 @@
       createbuttonElement2.textContent = "Delete";
       console.log(createbuttonElement2);
 
+      function addTodo() {
+        const inputId = document.getElementById("todo-input");
+        let valueOfInputBox = inputId.value;
+        if (!valueOfInputBox.trim()) {
+          return;
+        }
+        createLiElement.textContent = valueOfInputBox;
+        parentElement.appendChild(createLiElement);
+        createLiElement.appendChild(createSpanElement);
+        createLiElement.appendChild(createdivElement);
+        createdivElement.appendChild(createbuttonElement1);
+        createdivElement.appendChild(createbuttonElement2);
+      }
+
     </script>
 
   </div>
