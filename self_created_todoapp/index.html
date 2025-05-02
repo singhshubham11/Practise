@@ -74,6 +74,12 @@
       gap: 10px;
       display: inline-block;
     }    
+    .edit-input{
+      padding: 0.3rem;
+      border-radius: 5px;
+      border: none;
+      width: 70%;
+    }
     
   </style>
 </head>
@@ -85,14 +91,7 @@
       <button id="addButtonId">Add</button>
     </div>
     <ul id="todo-list">
-      <li>
-        <span class="todo-text">Go to gym</span>
-        <input type="text">
-        <div class="todo-actions">
-          <button>Edit</button>
-          <button>Delete</button>
-        </div>
-      </li>
+
     </ul>
 
     <script>
@@ -136,6 +135,31 @@
 
         let isEditing = false;
         let inputBox = null;
+
+        createbuttonElement1.addEventListener('click', function () {
+          if (!isEditing) {
+            inputBox = document.createElement("input");
+            inputBox.type = "text";
+            inputBox.value = createSpanElement.textContent;
+            inputBox.className = "edit-input";
+            inputBox.style.marginRight = "10px";
+
+            createLiElement.insertBefore(inputBox, createSpanElement);
+            createSpanElement.style.display = "none";
+
+            createbuttonElement1.textContent = "Save";
+            isEditing = true;
+          } else {
+            const newvalue = inputBox.value.trim();
+            if (newvalue) {
+              createSpanElement.textContent = newvalue;
+            }
+            createLiElement.removeChild(inputBox);
+            createSpanElement.style.display = "inline";
+            createbuttonElement1.textContent = "Edit";
+            isEditing = false;
+          }
+        });
 
         createbuttonElement2.addEventListener('click', function () {
           createLiElement.remove();
