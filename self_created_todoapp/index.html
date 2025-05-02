@@ -4,6 +4,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TODO-APP</title>
+  <style>
+    *{
+      box-sizing: border-box;
+    }
+    body{
+      background-color: #9CD7E5;
+      margin: 0;
+      height: 100vh;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .parent-container{
+      background-color: #14204A;
+      color: white;
+      border-radius: 20px;
+      margin-top: 10rem;
+      padding: 2rem;
+      box-shadow: 0 4px 10px rgb(0, 0, 0, 0.3);
+    }
+    h1{
+      text-align: center;
+      margin-bottom: 1rem;
+    }   
+    .child-container{
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    input[type = "text"]{
+      margin: 1rem;
+      padding: 10px;
+      width: 300px;
+      border-radius: 10px;
+      border: none;
+    }
+    button{
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      border: none;
+      background-color: #f0ad4e;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    ul{
+      list-style: none;
+      padding: 0;
+    }
+    li{
+      background-color: #ffffff20;
+      margin-bottom: 1rem;
+      border-radius: 1rem;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .todo-text{
+      flex: 1;
+      margin-right: 10px;
+    }
+    .todo-actions{
+      display: flex;
+      gap: 10px;
+      display: inline-block;
+    }    
+    
+  </style>
 </head>
 <body>
   <div class="parent-container">
