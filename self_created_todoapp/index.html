@@ -118,11 +118,9 @@
         createdivElement.setAttribute("class","todo-action");
 
         const createbuttonElement1 = document.createElement("button");
-        createbuttonElement1.addEventListener('click', editTodo);
         createbuttonElement1.textContent = "Edit";
 
         const createbuttonElement2 = document.createElement("button");
-        createbuttonElement2.addEventListener('click', deleteTodo);
         createbuttonElement2.textContent = "Delete";
 
         createdivElement.appendChild(createbuttonElement1);
@@ -135,8 +133,15 @@
         
 
         inputId.value = "";
-      }
-      
+
+        let isEditing = false;
+        let inputBox = null;
+
+        createbuttonElement2.addEventListener('click', function () {
+          createLiElement.remove();
+        });
+
+      }      
 
     </script>
 
