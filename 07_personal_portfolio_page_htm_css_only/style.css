@@ -41,3 +41,9 @@ section{
     margin-top: 10px;
     background-color: white;
 }
+
+footer{
+    text-align: center;
+    padding: 20px;
+    color: #777;
+}
