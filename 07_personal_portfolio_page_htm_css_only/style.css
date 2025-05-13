@@ -18,3 +18,9 @@ header{
     align-items: center;
     padding: 20px 0;
 }
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #007bff;
+}
