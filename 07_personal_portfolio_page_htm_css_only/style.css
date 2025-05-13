@@ -24,3 +24,9 @@ nav a {
     text-decoration: none;
     color: #007bff;
 }
+
+#hero{
+    padding: 60px 0;
+    text-align: center;
+    background-color: #e1ecf4;
+}
