@@ -134,3 +134,8 @@ body{
     font-size: 1.8rem;
     margin-bottom: 1rem;
 }
+
+.content-display p{
+    font-size: 1rem;
+    color: #555;
+}
