@@ -23,3 +23,9 @@ body{
     font-size: 1.5rem;
     font-weight: bold;
 }
+
+.nav-links{
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
