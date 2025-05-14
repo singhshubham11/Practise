@@ -39,3 +39,13 @@ body{
 .nav-links li a:hover{
     color: #00aaff;
 }
+
+.hero{
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
