@@ -124,3 +124,8 @@ body{
 .content-btn:hover{
     background: #00aaff;
 }
+
+.content-display{
+    max-width: 600px;
+    margin: 0 auto;
+}
