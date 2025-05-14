@@ -110,3 +110,17 @@ body{
     gap: 1rem;
     margin-bottom: 2rem;
 }
+
+.content-btn{
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    background: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.content-btn:hover{
+    background: #00aaff;
+}
