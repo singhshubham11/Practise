@@ -9,3 +9,12 @@ body{
     line-height: 1.6;
     color: #333;
 }
+
+.navbar{
+    background: #1a1a1a;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
