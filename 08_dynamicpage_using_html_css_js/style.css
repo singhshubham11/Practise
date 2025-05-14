@@ -98,3 +98,8 @@ body{
     background: #f4f4f4;
     padding: 4rem 2rem;
 }
+
+.dynamic-content h2{
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
