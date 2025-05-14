@@ -129,3 +129,8 @@ body{
     max-width: 600px;
     margin: 0 auto;
 }
+
+.content-display h3{
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
