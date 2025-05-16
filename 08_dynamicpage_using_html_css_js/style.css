@@ -159,6 +159,10 @@ footer{
         display: none;
     }
 
+    .nav-links.active{
+        display: flex;
+    }
+
     .hero h1{
         font-size: 2rem;
     }
