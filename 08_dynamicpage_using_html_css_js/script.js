@@ -29,6 +29,6 @@ buttons.forEach(button => {
     button.addEventListener('click', () => {
         const contentKey = button.getAttribute('data-content');
         contentTitle.textContent = contentData[contentKey].title;
-        contentTitle.textContent = contentData[contentKey].text;
+        contentText.textContent = contentData[contentKey].text;
     });
 })
