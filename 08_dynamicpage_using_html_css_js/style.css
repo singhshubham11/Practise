@@ -45,6 +45,15 @@ body{
 
 .hamburger{
     display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span{
+    background: #fff;
+    width: 25px;
+    height: 3px;
+    margin: 2px 0;
 }
 
 .hero{
@@ -157,9 +166,20 @@ footer{
 @media(max-width: 768px){
     .nav-links{
         display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #1a1a1a;
+        padding: 1rem;
     }
 
     .nav-links.active{
+        display: flex;
+    }
+
+    .hamburger{
         display: flex;
     }
 
