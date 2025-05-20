@@ -32,3 +32,23 @@ function getTasks() {
 function saveTasks(tasks) {
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
+
+function renderTasks() {
+    const taskList = document.getElementById('taskList');
+    taskList.innerHTML = '';
+
+    const tasks = getTasks();
+    tasks.forEach(task => {
+        const li = document.createElement('li');
+        li.className = task.completed ? 'completed' : '';
+
+        li.innerHTML= `<input type="checkbox" class="checkbox" ${task.completed ? 'checked' : ''} onchange="toggleTask(${task.id})">
+            <span>${task.text}</span>
+            <button onclick="deleteTask(${task.id})">Delete</button>`;
+        taskList.appendChild(li);
+    });
+}
+
+function loadTasks() {
+    renderTasks();
+}
