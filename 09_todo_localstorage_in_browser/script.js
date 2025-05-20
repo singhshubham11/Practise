@@ -16,4 +16,19 @@ function addTask() {
         text: taskText,
         completed: false
     }
+
+    let tasks = getTasks();
+    tasks.push(task);
+    saveTasks(tasks);
+
+    taskInput.value = '';
+    renderTasks();
+}
+
+function getTasks() {
+    return JSON.parse(localStorage.getItem('tasks')) || [];
+}
+
+function saveTasks(tasks) {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
 }
