@@ -49,6 +49,18 @@ function renderTasks() {
     });
 }
 
+function toggleTask(id) {
+    let tasks = getTasks();
+    tasks = tasks.map(task => {
+        if (task.id === id) {
+            task.completed = !task.completed;
+        }
+        return task;
+    })
+    saveTasks(tasks);
+    renderTasks();
+}
+
 function deleteTask(id) {
     let tasks = getTasks();
     tasks = tasks.filter(task => task.id !== id);
