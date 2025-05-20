@@ -49,7 +49,12 @@ function renderTasks() {
     });
 }
 
-
+function deleteTask(id) {
+    let tasks = getTasks();
+    tasks = tasks.filter(task => task.id !== id);
+    saveTasks(tasks);
+    renderTasks();
+}
 
 function loadTasks() {
     renderTasks();
